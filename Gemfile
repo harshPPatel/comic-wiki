@@ -25,6 +25,12 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# Used to fetch data from Comic Vine API
+gem 'comicvine'
+
+# Used to get env variables from .env file
+gem 'dotenv-rails'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
