@@ -10,28 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_16_185414) do
+ActiveRecord::Schema.define(version: 2020_10_16_200621) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "site_detail_url"
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string "image_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "characters_issues", id: false, force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.integer "issue_id", null: false
   end
 
   create_table "issues", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "site_detail_url"
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "volume_id", null: false
+    t.index ["volume_id"], name: "index_issues_on_volume_id"
   end
 
   create_table "volumes", force: :cascade do |t|
@@ -39,8 +42,10 @@ ActiveRecord::Schema.define(version: 2020_10_16_185414) do
     t.string "description"
     t.integer "start_year"
     t.string "site_detail_url"
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "issues", "volumes"
 end

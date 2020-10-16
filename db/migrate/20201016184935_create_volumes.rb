@@ -5,6 +5,7 @@ class CreateVolumes < ActiveRecord::Migration[6.0]
       t.string :description
       t.integer :start_year
       t.string :site_detail_url
+      t.string :image_url
 
       t.timestamps
     end
