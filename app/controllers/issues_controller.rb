@@ -1,6 +1,6 @@
 class IssuesController < ApplicationController
   def index
-    @issues = Issue.includes(:characters).all
+    @issues = Issue.includes(:characters).page params[:page]
   end
 
   def show

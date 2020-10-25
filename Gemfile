@@ -31,6 +31,9 @@ gem 'comicvine'
 # Used to fill up data coming from API
 gem 'faker'
 
+# Used to add pagination to the website
+gem 'kaminari'
+
 # Used to get env variables from .env file
 gem 'dotenv-rails'
 
