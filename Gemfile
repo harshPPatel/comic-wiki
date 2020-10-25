@@ -28,6 +28,9 @@ gem 'jbuilder', '~> 2.7'
 # Used to fetch data from Comic Vine API
 gem 'comicvine'
 
+# Used to fill up data coming from API
+gem 'faker'
+
 # Used to get env variables from .env file
 gem 'dotenv-rails'
 
