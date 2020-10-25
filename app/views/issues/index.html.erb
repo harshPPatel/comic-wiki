@@ -1,0 +1,18 @@
+<h1>List of Issues</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Total Characters</th>
+    <th>Show Links</th>
+  </tr>
+  <% @issues.each do |issue| %>
+    <tr>
+      <td><%= issue.id %></td>
+      <td><%= issue.name %></td>
+      <td><%= issue.characters.length %></td>
+      <td><%= link_to 'Show', issue_path(issue) %></td>
+    </tr>
+  <% end %>
+</table>

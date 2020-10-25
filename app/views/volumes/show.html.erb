@@ -1,0 +1,44 @@
+<p>
+  <strong>Name:</strong>
+  <%= @volume.name %>
+</p>
+ 
+<p>
+  <strong>Start Year:</strong>
+  <%= @volume.start_year %>
+</p>
+ 
+<p>
+  <strong>On Comic Vine:</strong>
+  <a href="<%= @volume.site_detail_url %>" target="_blank"><%= @volume.name %></a>
+</p>
+
+<p>
+  <img src="<%= @volume.image_url %>">
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @volume.description.html_safe %>
+</p>
+ 
+<p>
+  <strong>Issues:</strong>
+</p>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Show Links</th>
+  </tr>
+  <% @volume.issues.each do |issue| %>
+    <tr>
+      <td><%= issue.id %></td>
+      <td><%= issue.name %></td>
+      <td><%= link_to 'Show', issue_path(issue) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Back', volumes_path %>

@@ -1,0 +1,39 @@
+<p>
+  <strong>Name:</strong>
+  <%= @character.name %>
+</p>
+ 
+<p>
+  <strong>On Comic Vine:</strong>
+  <a href="<%= @character.site_detail_url %>" target="_blank"><%= @character.name %></a>
+</p>
+
+<p>
+  <img src="<%= @character.image_url %>">
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @character.description.html_safe %>
+</p>
+ 
+<p>
+  <strong>Issues appeared on:</strong>
+</p>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Show Links</th>
+  </tr>
+  <% @character.issues.each do |issue| %>
+    <tr>
+      <td><%= issue.id %></td>
+      <td><%= issue.name %></td>
+      <td><%= link_to 'Show', issue_path(issue) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Back', :back %>

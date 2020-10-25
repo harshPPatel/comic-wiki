@@ -10,6 +10,25 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/about">About Us</a>
+        </li>
+        <li>
+          <%= link_to 'Volumes', volumes_path %>
+        </li>
+        <li>
+          <%= link_to 'Issues', issues_path %>
+        </li>
+        <li>
+          <%= link_to 'Characters', characters_path %>
+        </li>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

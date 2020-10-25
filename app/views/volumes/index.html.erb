@@ -1,0 +1,22 @@
+<h1>List of Volumes</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Start Year</th>
+    <%# <th>Description</th> %>
+    <th>Total Issues</th>
+    <th>Show Links</th>
+  </tr>
+  <% @volumes.each do |volume| %>
+    <tr>
+      <td><%= volume.id %></td>
+      <td><%= volume.name %></td>
+      <td><%= volume.start_year %></td>
+      <%# <td><%= volume.description.html_safe</td> %>
+      <td><%= volume.issues.length %></td>
+      <td><%= link_to 'Show', volume_path(volume) %></td>
+    </tr>
+  <% end %>
+</table>
