@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :characters
 
   get '/about', to: 'static_pages#about'
+  get '/search' => 'static_pages#search', :as => 'search_page'
 
 end

@@ -1,0 +1,50 @@
+<h1 class="display-4 mb-5 mt-5">
+  <% if @category == 'Volumes' %>
+  Volumes
+  <% elsif @category == 'Issues' %>
+  Issues
+  <% elsif @category == 'Characters' %>
+  Characters
+  <% end %>
+  Search results for "<%= params[:search] %>"
+</h1>
+
+
+<table class="table table-hover mb-5">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <% if @category == 'Volumes' %>
+      <th scope="col">Total Issues</th>
+      <% elsif @category == 'Issues' %>
+      <th scope="col">Volume</th>
+      <th scope="col">Total Characters</th>
+      <% elsif @category == 'Characters' %>
+      <th scope="col">Total Issues appeared on</th>
+      <% end %>
+      <th scope="col">Links</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @results.each do |result| %>
+    <tr>
+      <th scope="row"><%= result.id %></th>
+      <td><%= result.name %></td>
+      <% if @category == 'Volumes' %>
+      <td><%= result.issues.length %></td>
+      <td><%= link_to 'Show', volume_path(result) %></td>
+      <% elsif @category == 'Issues' %>
+      <td><%= link_to result.volume.name, volume_path(result.volume) %></td>
+      <td><%= result.characters.length %></td>
+      <td><%= link_to 'Show', issue_path(result) %></td>
+      <% elsif @category == 'Characters' %>
+      <td><%= result.issues.length %></td>
+      <td><%= link_to 'Show', character_path(result) %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @results %>

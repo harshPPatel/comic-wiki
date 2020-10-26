@@ -44,10 +44,12 @@
           <a class="nav-link" href="/about">About</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      <%= form_tag(search_page_path, :method => "get",
+        class: 'form-inline my-2 my-lg-0') do %>
+      <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sw-2" %>
+      <%= select_tag "category", raw("<option>Volumes</option><option selected>Issues</option><option>Characters</option>"), class: 'form-control ml-1 mr-1' %>
+      <%= button_tag "Search", :class => 'btn btn-outline-success my-2 my-sm-0',:name => nil%>
+      <% end %>
     </div>
   </nav>
 
